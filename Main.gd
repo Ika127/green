@@ -53,6 +53,7 @@ func _process(delta):
 		for index in range(4):
 				if player_slots[index].slot_card:
 					print(player_slots[index].slot_card.card)
+					print(player_slots[index].card_instance)
 		
 func double_click_card(card_instance):
 	selected_cards_double_click.append(card_instance)

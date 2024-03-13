@@ -3,6 +3,7 @@ extends Sprite2D
 var slot_card
 var card_instance
 var mouse_on_slot
+var area_entered
 
 func _process(delta):
 	if Input.is_action_just_released("ui_mouse_left"):
@@ -18,8 +19,9 @@ func _process(delta):
 			
 func _on_area_2d_area_entered(area):
 	if area.get_parent().is_in_group("card"):
-		card_instance = area.get_parent()
-
+		if area.get_parent().move_card:
+			card_instance = area.get_parent()
+		
 func _on_area_2d_area_exited(area):
 	pass
 			
