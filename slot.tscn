@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciks57ry1shmy"]
+
+[ext_resource type="Script" path="res://Slot.gd" id="1_js45u"]
+[ext_resource type="Shader" path="res://slot.gdshader" id="2_livr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66t6e"]
+size = Vector2(100, 150)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j64sb"]
+shader = ExtResource("2_livr7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_kvxvb"]
+size = Vector2(100, 150)
+
+[node name="Slot" type="Sprite2D" groups=["slot"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_js45u")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_66t6e")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_j64sb")
+mesh = SubResource("QuadMesh_kvxvb")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
