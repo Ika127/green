@@ -12,7 +12,8 @@ var player_slots = []
 
 var deck_instance
 var battlefield_instance
-
+var unit_instance
+var enemy_instance
 
 var selected_cards_single_click = []
 var selected_cards_double_click = []
@@ -26,11 +27,15 @@ func _ready():
 	battlefield_instance = battlefield_scene.instantiate()
 	battlefield_instance.position = Vector2(800,208)
 	add_child(battlefield_instance)
-	for i in range(100):
-		var unit_instance
-		unit_instance = unit_scene.instantiate()
-		unit_instance.position = Vector2(randi_range(0,100),randi_range(20,390))
-		add_child(unit_instance)
+	unit_instance = unit_scene.instantiate()
+	#unit_instance.position = Vector2(randi_range(0,100),randi_range(20,390))
+	unit_instance.position = Vector2(100,300)
+	add_child(unit_instance)
+	enemy_instance = unit_scene.instantiate()
+	#enemy_instance.position = Vector2(randi_range(1100,1200),randi_range(20,390))
+	enemy_instance.position = Vector2(700,300)
+	enemy_instance.friendly = false
+	add_child(enemy_instance)
 	deck_instance = deck_scene.instantiate()
 	deck_instance.position = Vector2(1100, 700)
 	deck_instance.connect("draw_card", draw_card)

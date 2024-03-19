@@ -1,9 +1,9 @@
-extends Sprite2D
+extends RigidBody2D
 
 var enemy_detected
 var base_movement_speed = 1
-var movement_speed_modifier = 1.1
-var friendly
+var movement_speed_modifier = 1
+var friendly = true
 
 
 
@@ -24,8 +24,13 @@ func _process(delta):
 
 
 
-
 func move():
-	position.x += base_movement_speed * movement_speed_modifier;
-	
+	if(friendly):
+		position.x += base_movement_speed * movement_speed_modifier;
+	if(not friendly):
+		position.x -= base_movement_speed * movement_speed_modifier;
+
+func knockback():
+	pass
+
 
