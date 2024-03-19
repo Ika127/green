@@ -3,11 +3,16 @@ extends Node2D
 var deck_scene = preload("res://deck.tscn")
 var card_scene = preload("res://card.tscn")
 var slot_scene = preload("res://slot.tscn")
+var battlefield_scene = preload("res://Battlefield.tscn")
+var unit_scene = preload("res://Unit.tscn")
+
 
 var player_hand = []
 var player_slots = []
 
 var deck_instance
+var battlefield_instance
+
 
 var selected_cards_single_click = []
 var selected_cards_double_click = []
@@ -18,6 +23,14 @@ var double_click_helper_flag = true
 # This flag helps to run certain functions like rearrange_cards() only one per selection of a card stack.
 
 func _ready():
+	battlefield_instance = battlefield_scene.instantiate()
+	battlefield_instance.position = Vector2(800,208)
+	add_child(battlefield_instance)
+	for i in range(100):
+		var unit_instance
+		unit_instance = unit_scene.instantiate()
+		unit_instance.position = Vector2(randi_range(0,100),randi_range(20,390))
+		add_child(unit_instance)
 	deck_instance = deck_scene.instantiate()
 	deck_instance.position = Vector2(1100, 700)
 	deck_instance.connect("draw_card", draw_card)
