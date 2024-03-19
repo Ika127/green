@@ -21,7 +21,7 @@ func generate_deck():
 				value = [10]
 			else:
 				value = [int(rank)]
-			deck.append({"texture": "card" + "-" + suit + "-" + str(rank) + ".png", "value": value, "hidden": false})
+			deck.append({"name": str(rank) + " " + suit, "texture": "card" + "-" + suit + "-" + str(rank) + ".png", "value": value, "hidden": false})
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_mouse_left") and mouse_on_deck:
@@ -29,6 +29,9 @@ func _process(_delta):
 
 func draw():
 	return deck.pop_back()
+
+func shuffle():
+	deck.shuffle()
 
 func _on_area_2d_mouse_entered():
 	mouse_on_deck = true

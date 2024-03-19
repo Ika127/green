@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bigviavg1emxc"]
+[gd_scene load_steps=5 format=3 uid="uid://bigviavg1emxc"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_hqsij"]
+[ext_resource type="Shader" path="res://main.gdshader" id="2_qc8ys"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u11y5"]
+shader = ExtResource("2_qc8ys")
+
+[sub_resource type="QuadMesh" id="QuadMesh_t5ewb"]
+size = Vector2(2400, 800)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hqsij")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_u11y5")
+position = Vector2(1199.7, 400.34)
+scale = Vector2(1.00775, 1.01665)
+mesh = SubResource("QuadMesh_t5ewb")

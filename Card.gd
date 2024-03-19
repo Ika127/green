@@ -4,7 +4,11 @@ var initial_mouse_position # initial position of the mouse when selected, allows
 var target_position = null # target position of lerp interpolation animation
 var default_position = null
 var target_rotation = 0
-var rotation_degrees_step = 0
+
+var count = 0
+var increment = 1
+
+var wiggle_direction = -1
 
 var interpolation_speed = 10.0
 
@@ -43,8 +47,7 @@ func _process(delta):
 		click_timer += delta
 	
 	if Input.is_action_just_pressed("ui_mouse_right") and mouse_on_card:
-		target_position = slot_instance.position
-		flip_card = true
+		pass
 		
 	if Input.is_action_just_released("ui_mouse_left"):
 		move_card = false
@@ -52,7 +55,7 @@ func _process(delta):
 
 	if (target_position-position).length() == 2.0:
 		target_position = position
-	
+		
 	if flip_card:
 		scale = scale.lerp(Vector2(-0.1, scale.y), interpolation_speed * delta)
 		if scale.x <= 0:
@@ -69,18 +72,35 @@ func _process(delta):
 
 	if move_card and card_is_foreground:
 		position = get_global_mouse_position() - initial_mouse_position
-		
 		target_rotation = Input.get_last_mouse_velocity().x
-		
 		if target_rotation > 0:
 			rotation_degrees += 1
 		if target_rotation < 0:
 			rotation_degrees -= 1
 		rotation_degrees = clamp(rotation_degrees, -33, 33)
 		rotation_degrees *= 0.95
-	
-	clamp_to_window()
+	else:
+		if count <= 100 and increment == 1:
+			count += 1
+		elif count > 100 and increment == 1:
+			increment = -1
+			count -= 1
+		elif count >= -100 and increment == -1:
+			count -= 1
+		elif count < -100 and increment == -1:
+			increment = 1
+			count += 1
+		target_rotation = count
+		if target_rotation > 0:
+			rotation_degrees += 0.1
+		if target_rotation < 0:
+			rotation_degrees -= 0.1
+		rotation_degrees = clamp(rotation_degrees, -10, 10)
+		rotation_degrees *= 0.95
 
+		
+	clamp_to_window()
+	
 func set_slot(_slot_instance):
 	_slot_instance.slot_card = self
 	slot_instance = _slot_instance
