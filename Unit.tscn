@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3r1hnbmb2dmd"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ibwjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isjg4"]
+size = Vector2(1.01362, 1.01348)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8t8n"]
+size = Vector2(1.98365, 16.9272)
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(91.75, 92.75)
+texture = SubResource("PlaceholderTexture2D_ibwjo")
+
+[node name="UnitModel" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="UnitModel"]
+position = Vector2(-0.00544961, 1.54233e-08)
+shape = SubResource("RectangleShape2D_isjg4")
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+position = Vector2(1.49319, 0.0107817)
+shape = SubResource("RectangleShape2D_f8t8n")

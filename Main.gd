@@ -19,18 +19,18 @@ var double_click_helper_flag = true
 
 func _ready():
 	deck_instance = deck_scene.instantiate()
-	deck_instance.position = Vector2(125, 175)
+	deck_instance.position = Vector2(1100, 700)
 	deck_instance.connect("draw_card", draw_card)
 	add_child(deck_instance)
 	
 	for index in range(4):
 		var slot_instance = slot_scene.instantiate()
-		slot_instance.position = Vector2(125 + index * 225, 500)
+		slot_instance.position = Vector2(125 + index * 225, 700)
 		add_child(slot_instance)
 		player_slots.append(slot_instance)
 
 	var slot_instance = slot_scene.instantiate()
-	slot_instance.position = Vector2(125 + 225, 175)
+	slot_instance.position = Vector2(125, 550)
 	add_child(slot_instance)
 	player_slots.append(slot_instance)
 	

@@ -13,7 +13,8 @@ shader = ExtResource("2_livr7")
 size = Vector2(100, 150)
 
 [node name="Slot" type="Sprite2D" groups=["slot"]]
-scale = Vector2(2, 2)
+position = Vector2(1.90735e-06, 3.8147e-06)
+scale = Vector2(0.833333, 0.888889)
 script = ExtResource("1_js45u")
 
 [node name="Area2D" type="Area2D" parent="."]

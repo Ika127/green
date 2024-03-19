@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://yulbuqc7n0av"]
+
+[ext_resource type="Script" path="res://Battlefield.gd" id="1_mipby"]
+[ext_resource type="Texture2D" uid="uid://cmwldarqd40f4" path="res://assets/battlefield.png" id="1_ok7e0"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_ok7e0")
+script = ExtResource("1_mipby")

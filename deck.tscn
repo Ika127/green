@@ -7,8 +7,8 @@
 size = Vector2(100, 150)
 
 [node name="Deck" type="Sprite2D" groups=["deck"]]
-position = Vector2(600, 200)
-scale = Vector2(2, 2)
+position = Vector2(1.90735e-06, 3.8147e-06)
+scale = Vector2(0.833333, 0.888889)
 texture = ExtResource("1_3nubk")
 script = ExtResource("1_fypyv")
 
